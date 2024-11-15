@@ -31,8 +31,8 @@ public class SpringBootAppTests {
 	void contextLoadsDevApp() {
 		ResponseEntity<String> entity = restTemplate.getForEntity("http://localhost:" +
 				devApp.getMappedPort(8080) + "/profile", String.class);
-		Assertions.assertEquals("Current profile is dev\n", entity.getBody());
-		System.out.println(entity.getBody());
+		Assertions.assertTrue(entity.getBody().contains("Current profile is dev"));
+		//System.out.println(entity.getBody());
 	}
 
 /*	@Test

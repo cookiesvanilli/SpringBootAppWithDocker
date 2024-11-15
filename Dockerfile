@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk
 
-EXPOSE 8081
+EXPOSE 8080
 
 ADD target/SpringBootApp-0.0.1-SNAPSHOT.jar myapp.jar
 

@@ -9,7 +9,7 @@ public class Controller {
     @RestController
     @RequestMapping("/")
     public class ProfileController {
-        private SystemProfile profile;
+       private SystemProfile profile;
 
         public ProfileController(SystemProfile profile) {
             this.profile = profile;

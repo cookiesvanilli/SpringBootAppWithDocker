@@ -18,13 +18,13 @@ public class SpringBootAppTests {
 	private static final GenericContainer<?> devApp = new GenericContainer<>("devapp")
 			.withExposedPorts(8080);
 
-	/*private static final GenericContainer<?> prodApp = new GenericContainer<>("prodapp")
-			.withExposedPorts(8081);*/
+	private static final GenericContainer<?> prodApp = new GenericContainer<>("prodapp")
+			.withExposedPorts(8081);
 
 	@BeforeAll
 	public static void setUp() {
 		devApp.start();
-		//prodApp.start();
+		prodApp.start();
 	}
 
 	@Test
@@ -32,15 +32,15 @@ public class SpringBootAppTests {
 		ResponseEntity<String> entity = restTemplate.getForEntity("http://localhost:" +
 				devApp.getMappedPort(8080) + "/profile", String.class);
 		Assertions.assertTrue(entity.getBody().contains("Current profile is dev"));
-		//System.out.println(entity.getBody());
+		System.out.println(entity.getBody());
 	}
 
-/*	@Test
+	@Test
 	void contextLoadsProdApp() {
 		ResponseEntity<String> entity = restTemplate.getForEntity("http://localhost:" +
 				prodApp.getMappedPort(8081) + "/profile", String.class);
 		Assertions.assertEquals("Current profile is production\n", entity.getBody());
 		System.out.println(entity.getBody());
-	}*/
+	}
 
 }
